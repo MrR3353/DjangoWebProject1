@@ -1,0 +1,41 @@
+﻿{% extends "app/layout.html" %}
+
+{% block contact %}
+<strong><u>
+{% endblock %}
+{% block contact_end %}
+</u></strong>
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<!--<h3>{{ message }}</h3>-->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <address>
+            Art Studio Pastila<br />
+            Псков, ул. Гражданская, д. 5а<br />
+            <abbr title="Телефон">P:</abbr>
+             89113911368<br />
+             89118896587<br />
+            +7 (951) 755-17-25<br />
+        </address>
+
+        <address>
+            <strong>Instagram:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+            <strong>VK:</strong> <a href="https://vk.com/clubstudiopastila">vk.com/clubstudiopastila</a>
+        </address>
+    </div>
+<!--    <div class="col-sm">-->
+<!--    </div>-->
+    <div class="col-sm">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A608a7046a5531a82b1046b44f258290fe5ea1f7bb997fd9027a6025d672cb74f&amp;width=721&amp;height=473&amp;lang=ru_RU&amp;scroll=true"></script>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "app/layout.html" %}
+
+{% block blog %}
+<strong><u>
+{% endblock %}
+{% block blog_end %}
+</u></strong>
+{% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+{% for post in posts %}
+<hr/>
+<div class="">
+
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h2> {{post.title}} </h2>
+                <h4> {{post.posted}} </h4>
+                <p> {{post.description}} </p>
+                <p><a href="{% url 'blogpost' parametr=post.id %}"> Читать далее </a> </p>
+            </div>
+            {% if user.is_superuser %}
+                <div class="col-auto d-none d-lg-block">
+                    <a href="{% url 'del_post' post.id %}" class="btn btn-outline-danger">Удалить</a>
+                </div>
+            {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

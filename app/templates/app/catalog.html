@@ -1,0 +1,35 @@
+{% extends "app/layout.html" %}
+
+{% block catalog %}
+<strong><u>
+{% endblock %}
+{% block catalog_end %}
+</u></strong>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+{% for product in products %}
+<div>
+    <form action="{% url 'catalog' product.pk %}">
+        <h2> {{product.title}} </h2>
+
+        {% if product.image and product.image.url != '/media/temp.jpg' %}
+        <img src="{{ product.image.url }}" alt=" Картинка статьи блога"  width="300" height="200"/>
+        {% endif %}
+
+        <h4> {{product.price}} ₽ </h4>
+        <p> {{product.description}} </p>
+        <img src="{{product.image}}" alt="">
+        {% if user.is_authenticated %}
+            <br>
+            <button type="submit">Записаться</button>
+        {% endif %}
+
+    </form>
+</div>
+<hr/>
+{% endfor %}
+
+{% endblock %}

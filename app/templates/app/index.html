@@ -1,0 +1,35 @@
+﻿{% extends "app/layout.html" %}
+
+{% block home %}
+<strong><u>
+{% endblock %}
+{% block home_end %}
+</u></strong>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<img src="{% static 'app/content/ban1.jpg'%} " alt="Первый слайд" class="rounded mx-auto d-block img-responsive" />
+<div class="d-flex justify-content-center"><h3 class="">Качественный маникюр и педикюр</h3></div>
+
+
+
+
+{% for post in posts %}
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+<!--              <strong class="d-inline-block mb-2 text-primary">World</strong>-->
+              <h3 class="mb-0">{{post.title}}</h3>
+              <div class="mb-1 text-muted">{{post.posted}}</div>
+              <p class="card-text mb-auto">{{post.description}}</p>
+              <a href="{% url 'blogpost' parametr=post.id %}"> Читать далее </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src="{{ post.image.url }}" alt=" Картинка статьи блога" height="300" width="300" style="object-fit: cover;"/>
+           </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

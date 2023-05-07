@@ -1,0 +1,151 @@
+{% extends "app/layout.html" %}
+
+{% block basket %}
+<strong><u>
+{% endblock %}
+{% block basket_end %}
+</u></strong>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+{% if product_id %}
+    <form action="{% url 'make_order' product_id %}" method="POST">
+        {% csrf_token %}
+
+        {% for p in all_products %}
+            {% if p.id == product_id %}
+                <h3>{{p.title}}</h3>
+                {% if p.image and p.image.url != '/media/temp.jpg' %}
+                                <img src="{{ p.image.url }}" alt=" Картинка статьи блога"  width="300" height="200"/>
+                {% endif %}
+                <p>Цена: {{p.price}}</p>
+            {% endif %}
+        {% endfor %}
+
+        <div>
+            <select name="dropdown" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                {% for employer in employers %}
+                    <option value="{{employer.id}}">{{employer.name}}</option>
+                {% endfor %}
+            </select>
+            <br>
+        </div>
+
+        <!--  <meta charset="utf-8">-->
+        <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+        <!--  &lt;!&ndash; jQuery &ndash;&gt;-->
+        <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+
+        <!-- XDSoft DateTimePicker -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+        <input id="datetimepicker" name="datetimepicker" type="text" autocomplete="off">
+
+        <script>
+        var logic = function( currentDateTime ){
+        // 'this' is jquery object datetimepicker
+
+
+        var timeDiff = Math.abs(currentDateTime.getTime() - new Date().getTime());
+        var diffDays = Math.round(timeDiff / (1000 * 3600 * 24));
+        console.log(diffDays);
+
+        if (diffDays == 0) {    this.setOptions({      allowTimes:  {{times.0|safe}}    });  }
+        if (diffDays == 1) {    this.setOptions({      allowTimes:  {{times.1|safe}}    });  }
+        if (diffDays == 2) {    this.setOptions({      allowTimes:  {{times.2|safe}}    });  }
+        if (diffDays == 3) {    this.setOptions({      allowTimes:  {{times.3|safe}}    });  }
+        if (diffDays == 4) {    this.setOptions({      allowTimes:  {{times.4|safe}}    });  }
+        if (diffDays == 5) {    this.setOptions({      allowTimes:  {{times.5|safe}}    });  }
+        if (diffDays == 6) {    this.setOptions({      allowTimes:  {{times.6|safe}}    });  }
+        if (diffDays == 7) {    this.setOptions({      allowTimes:  {{times.7|safe}}    });  }
+        if (diffDays == 8) {    this.setOptions({      allowTimes:  {{times.8|safe}}    });  }
+        if (diffDays == 9) {    this.setOptions({      allowTimes:  {{times.9|safe}}    });  }
+        if (diffDays == 10) {    this.setOptions({      allowTimes:  {{times.10|safe}}    });  }
+        if (diffDays == 11) {    this.setOptions({      allowTimes:  {{times.11|safe}}    });  }
+        if (diffDays == 12) {    this.setOptions({      allowTimes:  {{times.12|safe}}    });  }
+        if (diffDays == 13) {    this.setOptions({      allowTimes:  {{times.13|safe}}    });  }
+        if (diffDays == 14) {    this.setOptions({      allowTimes:  {{times.14|safe}}    });  }
+        if (diffDays == 15) {    this.setOptions({      allowTimes:  {{times.15|safe}}    });  }
+        if (diffDays == 16) {    this.setOptions({      allowTimes:  {{times.16|safe}}    });  }
+        if (diffDays == 17) {    this.setOptions({      allowTimes:  {{times.17|safe}}    });  }
+        if (diffDays == 18) {    this.setOptions({      allowTimes:  {{times.18|safe}}    });  }
+        if (diffDays == 19) {    this.setOptions({      allowTimes:  {{times.19|safe}}    });  }
+        if (diffDays == 20) {    this.setOptions({      allowTimes:  {{times.20|safe}}    });  }
+        if (diffDays == 21) {    this.setOptions({      allowTimes:  {{times.21|safe}}    });  }
+        if (diffDays == 22) {    this.setOptions({      allowTimes:  {{times.22|safe}}    });  }
+        if (diffDays == 23) {    this.setOptions({      allowTimes:  {{times.23|safe}}    });  }
+        if (diffDays == 24) {    this.setOptions({      allowTimes:  {{times.24|safe}}    });  }
+        if (diffDays == 25) {    this.setOptions({      allowTimes:  {{times.25|safe}}    });  }
+        if (diffDays == 26) {    this.setOptions({      allowTimes:  {{times.26|safe}}    });  }
+        if (diffDays == 27) {    this.setOptions({      allowTimes:  {{times.27|safe}}    });  }
+        if (diffDays == 28) {    this.setOptions({      allowTimes:  {{times.28|safe}}    });  }
+        if (diffDays == 29) {    this.setOptions({      allowTimes:  {{times.29|safe}}    });  }
+
+
+
+        if( currentDateTime.getDay()==6 ){
+        this.setOptions({
+          minTime:'11:00'
+        });
+        }else
+        this.setOptions({
+          minTime:'8:00'
+        });
+        };
+        $(function () {
+          $("#datetimepicker").datetimepicker({
+          onChangeDateTime:logic,
+          onShow:logic,
+          allowTimes:  {{times.0|safe}},
+          lang:'ru',
+          yearStart: 2023,
+          yearEnd: 2023,
+          minDate:'0',
+          maxDate:'+1970/01/30'
+          });
+        });
+        $.datetimepicker.setLocale('ru');
+        </script>
+        <button type="submit"> Подтвердить </button>
+    </form>
+
+
+<!--    <a href="{% url 'make_order' product_id %}">Оплатить {{ total }} руб.</a>-->
+
+
+{% else %}
+Услуга не выбрана
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+<!--    <form action="{% url 'catalog' product.pk 1 %}">-->
+<!--        <h2> {{product.title}} </h2>-->
+
+<!--        {% if product.image and product.image.url != '/media/temp.jpg' %}-->
+<!--        <img src="{{ product.image.url }}" alt=" Картинка статьи блога"  width="300" height="200"/>-->
+<!--        {% endif %}-->
+
+<!--        <h4> {{product.price}} ₽ </h4>-->
+<!--        <p> {{product.description}} </p>-->
+<!--        <img src="{{product.image}}" alt="">-->
+<!--        <select name="dropdown" class="form-select form-select-sm" aria-label=".form-select-sm example">-->
+<!--            {% for employer in employers %}-->
+<!--                <option value="{{employer.id}}">{{employer.name}}</option>-->
+<!--            {% endfor %}-->
+<!--        </select>-->
+<!--        {% if user.is_authenticated %}-->
+<!--        <button type="submit">Купить</button>-->
+<!--&lt;!&ndash;            <a href="{% url 'catalog' product.pk 1 %}" class="btn btn-success">Купить</a>&ndash;&gt;-->
+<!--        {% endif %}-->
+<!--    </form>-->

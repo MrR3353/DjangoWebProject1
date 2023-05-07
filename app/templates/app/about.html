@@ -1,0 +1,38 @@
+﻿{% extends "app/layout.html" %}
+
+{% block about %}
+<strong><u>
+{% endblock %}
+{% block about_end %}
+</u></strong>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<p>Наша студия славится отличным качеством выполнения услуг, отзывчивым персоналом, чистотой и уютом.
+Девиз нашей студии : "Всё для людей!". Будем с нетерпением ждать Вас ;).</p>
+
+<div>
+    <img src="{% static 'app/content/bg.jpg' %}" alt="L" height="500">
+</div>
+<br>
+<h2>Наши мастера:</h2>
+<br>
+{% for employer in employers %}
+    <h3>{{employer.name}}</h3>
+    {% if employer.image and employer.image.url != '/media/temp.jpg' %}
+        <div class="emloyer_img">
+<!--            <img src="{{ employer.image.url }}" alt=" Картинка статьи блога" width="initial" height="100%"/>-->
+            <img src="{{ employer.image.url }}" alt=" Картинка статьи блога" />
+        </div>
+    {% endif %}
+    <p>{{employer.bio}}</p>
+<hr>
+{% endfor %}
+
+
+{% endblock %}
+
